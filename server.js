@@ -1,16 +1,16 @@
 ﻿require('dotenv').config();
 var cors = require('cors');
 let Telegram      = require('node-telegram-bot-api');
-let TelegramToken = process.env.TELEGRAM_TOKEN;
+let TelegramToken = '5292816313:AAEdq7d4gqXGN80gJYV3PMZDTskkxT5za00';
 let TelegramBot   = new Telegram(TelegramToken, {polling: true});
-let fs 			  = require('fs');
-//let https     	  = require('https')
+let fs 		  = require('fs');
+//let https      	  = require('https')
 //let privateKey    = fs.readFileSync('./ssl/go33.key', 'utf8');
 //let certificate   = fs.readFileSync('./ssl/go33.pem', 'utf8');
 //let credentials   = {key: privateKey, cert: certificate};
 let express       = require('express');
 let app           = express();
-//let server 	  	  = https.createServer(credentials, app);
+//let server 	  = https.createServer(credentials, app);
 app.use(cors({
     origin: '*',
     optionsSuccessStatus: 200
@@ -44,7 +44,7 @@ global['redT'] = redT;
 global['userOnline'] = 0;
 require('./app/Helpers/socketUser')(redT); // Add function socket
 require('./routerHttp')(app, redT);   // load các routes HTTP
-require('./routerCMS')(app, redT);	//load routes CMS
+require('./routerCMS')(app, redT); //load routes CMS
 require('./routerSocket')(app, redT); // load các routes WebSocket
 require('./app/Cron/taixiu')(redT);   // Chạy game Tài Xỉu
 require('./app/Cron/baucua')(redT);   // Chạy game Bầu Cua
